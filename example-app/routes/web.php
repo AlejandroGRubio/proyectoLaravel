@@ -14,5 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['nombre'=>'Carlos',
+        'apellidos'=>'Gabriel',
+        'parametros'=>[
+            'tiempo'=>25,
+            'carga'=>'lazy']
+    ]);
 });
+
+
+//Peticion GET de todas las pistas.
+Route::get('/pista', "PistaController@index");
+Route::get('/pista/{id}', "PistaController@show");
+Route::post('/pista', "PistaController@store");
+
+Route::put('/pista', "PistaController@update");
+Route::patch('/pista', "PistaController@update");
+
+Route::delete('/pista', "PistaController@destroy");
+
+Route::get('/crear-pista', "PistaController@create");
+
+Route::get('/modificar-pista', "PistaController@edit");
+
+
